@@ -15,13 +15,15 @@ class Movie(models.Model):
     vote = models.IntegerField()
     director_name = models.CharField(max_length=100)
     cast = models.ManyToManyField(Actor,related_name='movies')
-    cinema = models.ForeignKey(to=Cinema,on_delete=models.CASCADE)
+    cinema = models.ForeignKey(to=Cinema,on_delete=models.CASCADE,related_name="_cinema_movie")
     
 
 class Sans(models.Model):
-    hall_number=models.models.models.CharField(max_length=50) #name or number
+    hall_number=models.CharField(max_length=50) #name or number
     date=models.DateTimeField()
+    cinema=models.ForeignKey(to=Movie,on_delete=models.CASCADE,related_name="_movie_sans")
     
+
 
 
 
